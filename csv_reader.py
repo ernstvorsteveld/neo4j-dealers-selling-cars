@@ -27,5 +27,5 @@ class ReadCsv:
         except:
             return None
 
-    def __del__(self):
-        self.close()
+#     def __del__(self):
+# # self.close()
