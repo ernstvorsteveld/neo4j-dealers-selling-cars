@@ -1,0 +1,3 @@
+= Neo4j: Dealers selling cars
+
+Using python to create a graph of dealers, cars and relations.
