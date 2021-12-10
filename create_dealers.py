@@ -12,25 +12,25 @@ class CreateDealers:
     def __del__(self):
         self.close()
 
-    def create(self, name, level, parent):
+    def create(self, dealer):
         with self.driver.session() as session:
-            session.write_transaction(self._create_dealer, name, level)
-            session.write_transaction(self._create_relation, name, parent)
+            session.write_transaction(self._create_dealer, dealer)
+            session.write_transaction(self._create_relation, dealer)
 
     @staticmethod
-    def _create_dealer(tx, name, level):
-        if level == "TopLevel":
-            tx.run("CREATE (n:Dealer:TopLevel {name: $name}) ", name=name)
-        if level == "SubLevel":
-            tx.run("CREATE (n:Dealer:SubLevel {name: $name}) ", name=name)
+    def _create_dealer(tx, dealer):
+        if dealer["level"] == "TopLevel":
+            tx.run("CREATE (n:Dealer:TopLevel {name: $name}) ", name=dealer["dealer"])
+        if dealer["level"] == "SubLevel":
+            tx.run("CREATE (n:Dealer:SubLevel {name: $name}) ", name=dealer["dealer"])
 
     @staticmethod
-    def _create_relation(tx, dealer, parent):
-        if parent is None or parent == "":
+    def _create_relation(tx, dealer):
+        if dealer["parent"] is None or dealer["parent"] == "":
             return
 
         tx.run(
             "MATCH (d1:Dealer),(d2:Dealer) "
-            "WHERE d1.name = $parent AND d2.name = $dealer "
-            "CREATE (d2) - [pc:WORKSFOR {}] -> (d1)", parent=parent, dealer=dealer
+            "WHERE d1.name = $parent AND d2.name = $dealer_name "
+            "CREATE (d2) - [pc:WORKSFOR {}] -> (d1)", parent=dealer["parent"], dealer_name=dealer["dealer"]
         )

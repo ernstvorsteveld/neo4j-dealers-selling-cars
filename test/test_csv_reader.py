@@ -5,16 +5,16 @@ import csv_reader as cr
 class TestReadCsv(unittest.TestCase):
 
     def test_read(self):
-        reader = cr.ReadCsv("read_test.csv", ",")
+        reader = cr.ReadCsv("read_test.csv", ",", None)
         row = reader.read()
-        self.assertEqual(row[0], 'Van Mossel Automotive Groep')
-        self.assertEqual(row[1], 'TopLevel')
-        self.assertEqual(row[2], '')
+        self.assertEqual(row["dealer"], 'Van Mossel Automotive Groep')
+        self.assertEqual(row["level"], 'TopLevel')
+        self.assertEqual(row["parent"], '')
 
         row = reader.read()
-        self.assertEqual(row[0], 'Groningen')
-        self.assertEqual(row[1], 'SubLevel')
-        self.assertEqual(row[2], 'Van Mossel Automotive Groep')
+        self.assertEqual(row["dealer"], 'Groningen')
+        self.assertEqual(row["level"], 'SubLevel')
+        self.assertEqual(row["parent"], 'Van Mossel Automotive Groep')
         reader.close()
 
     def test_loop(self):

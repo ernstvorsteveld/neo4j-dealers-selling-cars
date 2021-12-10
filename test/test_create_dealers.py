@@ -11,7 +11,7 @@ class TestCreateDealers(unittest.TestCase):
         row = reader.read()
         while row is not None:
             print(row)
-            creator.create(row[0], row[1], row[2])
+            creator.create(row)
             row = reader.read()
 
 
