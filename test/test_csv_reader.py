@@ -23,6 +23,7 @@ class TestReadCsv(unittest.TestCase):
         while row is not None:
             print(row)
             row = reader.read()
+        reader.close()
 
 
 if __name__ == '__main__':

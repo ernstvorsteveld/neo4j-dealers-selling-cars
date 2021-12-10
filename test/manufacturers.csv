@@ -1,0 +1,9 @@
+name,parent
+"Stellantis",""
+"Peugeot","Stellantis"
+"Citroen","Stellantis"
+"DS Automobiles","Citroen"
+"Opel","Stellantis"
+"Lancia","Stellantis"
+"Fiat","Stellantis"
+"Barth","Fiat"

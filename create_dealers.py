@@ -1,10 +1,7 @@
-from neo4j import GraphDatabase
+from database_accessor import DatabaseAccessor
 
 
-class CreateDealers:
-
-    def __init__(self, driver):
-        self.driver = driver
+class CreateDealers(DatabaseAccessor):
 
     def create(self, dealer):
         with self.driver.get().session() as session:
