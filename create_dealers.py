@@ -1,5 +1,6 @@
 from neo4j import GraphDatabase
 
+
 class CreateDealers:
 
     def __init__(self, uri, user, password):
@@ -25,7 +26,7 @@ class CreateDealers:
 
     @staticmethod
     def _create_relation(tx, dealer, parent):
-        if parent == None or parent == "":
+        if parent is None or parent == "":
             return
 
         tx.run(
@@ -33,9 +34,3 @@ class CreateDealers:
             "WHERE d1.name = $parent AND d2.name = $dealer "
             "CREATE (d2) - [pc:WORKSFOR {}] -> (d1)", parent=parent, dealer=dealer
         )
-
-
-
-
-
-

@@ -1,6 +1,7 @@
 import unittest
 import csv_reader as cr
 
+
 class TestReadCsv(unittest.TestCase):
 
     def test_read(self):
@@ -19,9 +20,10 @@ class TestReadCsv(unittest.TestCase):
     def test_loop(self):
         reader = cr.ReadCsv("read_test.csv", ",")
         row = reader.read()
-        while row != None:
+        while row is not None:
             print(row)
             row = reader.read()
+
 
 if __name__ == '__main__':
     unittest.main()
