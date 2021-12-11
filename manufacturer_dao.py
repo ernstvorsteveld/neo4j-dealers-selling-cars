@@ -24,7 +24,7 @@ class ManufacturerDao(AbstractDao):
     @staticmethod
     def _create_relation(tx, manufacturer):
         if manufacturer["parent"] is None or manufacturer["parent"] == "":
-            return
+            pass
 
         tx.run(
             "MATCH (d1:Manufacturer),(d2:Manufacturer) "

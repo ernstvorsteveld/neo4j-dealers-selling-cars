@@ -14,10 +14,8 @@ class TestCreateDealers(unittest.TestCase):
         self.reader = ReadCsv("./test/manufacturers.csv", ",")
         row = self.reader.read()
         while row is not None:
-            print(row)
             dao.create(row)
-            manufacturer = row["name"]
-            in_db = dao.get_by_name(manufacturer)
+            in_db = dao.get_by_name(row["name"])
             self.assertIsNotNone(in_db, "Manufacturer not found.")
             row = self.reader.read()
 

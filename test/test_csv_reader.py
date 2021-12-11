@@ -21,7 +21,6 @@ class TestReadCsv(unittest.TestCase):
         reader = cr.ReadCsv("./test/read_test.csv", ",")
         row = reader.read()
         while row is not None:
-            print(row)
             row = reader.read()
         reader.close()
 
