@@ -11,7 +11,7 @@ class TestDealerDao(unittest.TestCase):
 
     def test_create_dealers(self):
         dao = DealerDao(self.driver)
-        self.reader = ReadCsv("./test/read_test.csv", ",")
+        self.reader = ReadCsv("./test/dealers.csv", ",")
         row = self.reader.read()
         while row is not None:
             dao.create(row)
