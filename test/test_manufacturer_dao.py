@@ -1,7 +1,7 @@
 import unittest
 from dao.manufacturer_dao import ManufacturerDao
 from csv_reader import ReadCsv
-from driver import Driver
+from dao.driver import Driver
 
 
 class TestCreateDealers(unittest.TestCase):
