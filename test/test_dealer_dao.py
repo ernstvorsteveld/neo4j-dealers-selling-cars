@@ -1,5 +1,5 @@
 import unittest
-from dealer_dao import DealerDao
+from dao.dealer_dao import DealerDao
 from csv_reader import ReadCsv
 from driver import Driver
 

@@ -1,4 +1,4 @@
-from abstract_dao import AbstractDao
+from dao.abstract_dao import AbstractDao
 
 
 class DealerDao(AbstractDao):
