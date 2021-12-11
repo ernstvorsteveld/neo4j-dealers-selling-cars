@@ -1,21 +1,24 @@
 import unittest
-import create_dealers as cd
-import csv_reader as cr
+from dealer_dao import DealerDao
+from csv_reader import ReadCsv
 from driver import Driver
 
 
-class TestCreateDealers(unittest.TestCase):
+class TestDealerDao(unittest.TestCase):
 
     def setUp(self):
         self.driver = Driver("bolt://localhost:7687", "neo4j", "Pass*w0rd!")
 
     def test_create_dealers(self):
-        creator = cd.CreateDealers(self.driver)
-        self.reader = cr.ReadCsv("./test/read_test.csv", ",")
+        dao = DealerDao(self.driver)
+        self.reader = ReadCsv("./test/read_test.csv", ",")
         row = self.reader.read()
         while row is not None:
             print(row)
-            creator.create(row)
+            dao.create(row)
+            dealer = row["dealer"]
+            in_db = dao.get_by_name(dealer)
+            self.assertIsNotNone(in_db, "Dealer not found.")
             row = self.reader.read()
 
     def __del__(self):

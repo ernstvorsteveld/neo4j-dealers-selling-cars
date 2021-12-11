@@ -1,12 +1,21 @@
-from database_accessor import DatabaseAccessor
+from abstract_dao import AbstractDao
 
 
-class CreateDealers(DatabaseAccessor):
+class DealerDao(AbstractDao):
 
     def create(self, dealer):
         with self.driver.get().session() as session:
             session.write_transaction(self._create_dealer, dealer)
             session.write_transaction(self._create_relation, dealer)
+
+    def get_by_name(self, name):
+        with self.driver.get().session() as session:
+            data = session.read_transaction(self._get_by_name, name)
+            return self.handle_single_result(data)
+
+    @staticmethod
+    def _get_by_name(tx, name):
+        return tx.run("MATCH (n:Dealer) WHERE (n.name=$name) return id(n) as id,n LIMIT 1", name=name).single()
 
     @staticmethod
     def _create_dealer(tx, dealer):
