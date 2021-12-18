@@ -8,14 +8,14 @@ class TestDealerDao(unittest.TestCase):
 
     def setUp(self):
         self.driver = Driver("bolt://localhost:7687", "neo4j", "Pass*w0rd!")
+        self.dao = DealerDao(self.driver)
 
     def test_create_dealers(self):
-        dao = DealerDao(self.driver)
         self.reader = ReadCsv("./test/dealers.csv", ",")
         row = self.reader.read()
         while row is not None:
-            dao.create(row)
-            in_db = dao.get_by_name(row["dealer"])
+            self.dao.create(row)
+            in_db = self.dao.get_by_name(row["dealer"])
             self.assertIsNotNone(in_db, "Dealer not found.")
             row = self.reader.read()
 
