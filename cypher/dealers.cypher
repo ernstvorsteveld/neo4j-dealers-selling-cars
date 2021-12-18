@@ -7,6 +7,7 @@ MATCH
   (d2:Dealer:SubLevel)
 WHERE d1.name = $dealer_broekhuis AND d2.name = $dealer_broekhuis_ede
 CREATE (d2) - [pc:WORKSFOR {}] -> (d1);
+
 :param dealer_broekhuis_ede_citroen => "Ede Citroen"
 CREATE (n:Dealer:SubLevel {name: $dealer_broekhuis_ede_citroen});
 MATCH
@@ -15,7 +16,6 @@ MATCH
 WHERE d1.name = $dealer_broekhuis_ede AND d2.name = $dealer_broekhuis_ede_citroen
 CREATE (d2) - [pc:WORKSFOR {}] -> (d1);
 
-CREATE (d2) - [pc:WORKSFOR {}] -> (d1);
 :param dealer_broekhuis_zwolle => "Zwolle";
 CREATE (n:Dealer:SubLevel {name: $dealer_broekhuis_zwolle});
 MATCH
@@ -23,6 +23,7 @@ MATCH
   (d2:Dealer:SubLevel)
 WHERE d1.name = $dealer_broekhuis AND d2.name = $dealer_broekhuis_zwolle
 CREATE (d2) - [pc:WORKSFOR {}] -> (d1);
+
 :param dealer_broekhuis_alkmaar => "Alkmaar";
 CREATE (n:Dealer:SubLevel {name: $dealer_broekhuis_alkmaar});
 MATCH
