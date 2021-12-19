@@ -13,7 +13,7 @@ class TestDao(unittest.TestCase):
         self.carDao = CarDao(self.driver)
 
     def create_manufacturers(self):
-        self.reader = ReadCsv("./test/manufacturers.csv", ",")
+        self.reader = ReadCsv("./config/manufacturers.csv", ",")
         row = self.reader.read()
         while row is not None:
             self.manufacturerDao.create(row)
@@ -21,7 +21,7 @@ class TestDao(unittest.TestCase):
         self.reader.close()
 
     def create_cars(self):
-        self.reader = ReadCsv("./test/cars.csv", ",")
+        self.reader = ReadCsv("./config/cars.csv", ",")
         row = self.reader.read()
         while row is not None:
             self.carDao.create(row)

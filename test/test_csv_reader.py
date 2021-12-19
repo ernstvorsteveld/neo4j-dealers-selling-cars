@@ -5,7 +5,7 @@ import csv_reader as cr
 class TestReadCsv(unittest.TestCase):
 
     def test_read(self):
-        reader = cr.ReadCsv("./test/dealers.csv", ",", None)
+        reader = cr.ReadCsv("./test/test-csv-reader.csv", ",", None)
         row = reader.read()
         self.assertEqual(row["dealer"], 'Van Mossel Automotive Groep')
         self.assertEqual(row["level"], 'TopLevel')
@@ -18,7 +18,7 @@ class TestReadCsv(unittest.TestCase):
         reader.close()
 
     def test_loop(self):
-        reader = cr.ReadCsv("./test/dealers.csv", ",")
+        reader = cr.ReadCsv("./test/test-csv-reader.csv", ",")
         row = reader.read()
         while row is not None:
             row = reader.read()

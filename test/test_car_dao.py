@@ -12,7 +12,7 @@ class TestCarDao(TestDao):
         self.create_manufacturers()
 
     def test_create_cars(self):
-        reader = ReadCsv("./test/cars.csv", ",")
+        reader = ReadCsv("./config/cars.csv", ",")
         row = reader.read()
         while row is not None:
             self.carDao.create(row)
