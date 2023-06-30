@@ -1,5 +1,4 @@
 import unittest
-import csv_reader as cr
 import csv_reader_functional as rf
 
 
@@ -33,7 +32,3 @@ class TestReadCsvFunctional(unittest.TestCase):
     def should_count(self, row):
         self.count += 1
         return self.count
-
-
-if __name__ == '__main__':
-    unittest.main()

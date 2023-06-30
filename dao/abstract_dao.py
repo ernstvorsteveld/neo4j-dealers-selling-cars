@@ -6,7 +6,8 @@ class AbstractDao:
     def close(self):
         self.driver.close()
 
-    def handle_single_result(self, result):
+    @staticmethod
+    def _handle_single_result(result):
         if result is None:
             return None
         result = {}

@@ -12,7 +12,7 @@ class CarDao(AbstractDao):
     def get_by_brand_and_name_and_type(self, criteria):
         with self.driver.get().session() as session:
             data = session.read_transaction(self._get_by_brand_and_name_and_type, criteria)
-            return self.handle_single_result(data)
+            return self._handle_single_result(data)
 
     @staticmethod
     def _get_by_brand_and_name_and_type(tx, criteria):
